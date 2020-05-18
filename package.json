@@ -1,8 +1,15 @@
 {
 	"name": "@draftbox-co/gatsby-wordpress-inline-images",
 	"description": "A Gatsby plugin to turn remote inline images to local static images",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"author": "Arun Priyadarshi <arunpriyadarshi52@gmail.com>",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/draftbox-co/gatsby-wordpress-inline-images"
+	},
+  "bugs": {
+    "url": "https://github.com/draftbox-co/gatsby-wordpress-inline-images/issues"
+  },
 	"keywords": [
 		"gatsby plugin",
 		"inline images",
@@ -22,7 +29,7 @@
 		"cross-env": "^5.1.4"
 	},
 	"scripts": {
-		"copy-files": "cp package.json ./dist/package.json && cp index.js ./dist/index.js",
+		"copy-files": "cp package.json ./dist/package.json && cp index.js ./dist/index.js && cp README.md ./dist/README.md",
 		"build": "yarn copy-files && babel src --out-dir ./dist --verbose --ignore **/__tests__",
 		"watch": "yarn copy-files && babel -w ./src --out-dir ./dist --verbose --extensions '.js' --ignore **/__tests__"
 	}

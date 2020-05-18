@@ -9,7 +9,7 @@ This repo is forked from `gatsby-wordpress-inline-images` by ([@TylerBarnes](htt
 ## installation
 
 ```bash
-yarn add @draftbox/gatsby-wordpress-inline-images
+yarn add @draftbox-co/gatsby-wordpress-inline-images
 ```
 
 Add this plugin as a plugin of `gatsby-source-wordpress`.
