@@ -1,5 +1,5 @@
 {
-	"name": "@draftbox/gatsby-wordpress-inline-images",
+	"name": "@draftbox-co/gatsby-wordpress-inline-images",
 	"description": "A Gatsby plugin to turn remote inline images to local static images",
 	"version": "1.0.0",
 	"author": "Arun Priyadarshi <arunpriyadarshi52@gmail.com>",

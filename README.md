@@ -23,7 +23,7 @@ Be sure to specify your baseurl and protocol a second time in the `gatsby-wordpr
       protocol: `https`,
       plugins: [
           {
-            resolve: `@draftbox/gatsby-wordpress-inline-images`,
+            resolve: `@draftbox-co/gatsby-wordpress-inline-images`,
             options: {
               baseUrl: `your-site.com`,
               protocol: `https`
