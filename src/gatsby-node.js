@@ -5,8 +5,9 @@ const cheerio = require(`cheerio`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const { fluid } = require(`gatsby-plugin-sharp`)
 const Img = require(`gatsby-image`)
+const sizeOf = require('image-size')
 
-const parseWPImagePath = require(`./utils/parseWPImagePath`)
+const parseWPImagePath = require(`./utils/parseWPImagePath`);
 
 exports.sourceNodes = async (
 	{ getNodes, cache, reporter, store, actions, createNodeId },
@@ -104,9 +105,7 @@ const transformInlineImagestoStaticImages = async (
 
 	if ((!field && typeof field !== "string") || !field.includes("<img")) return
 
-	const $ = cheerio.load(field, {
-		xmlMode: true,
-	})
+	const $ = cheerio.load(field);
 
 	const imgs = $(`img`)
 
@@ -189,8 +188,9 @@ const replaceImage = async ({
 	formattedImgTag.title = thisImg.attr(`title`)
 	formattedImgTag.alt = thisImg.attr(`alt`)
 
-	if (parsedUrlData.width) formattedImgTag.width = parsedUrlData.width
-	if (parsedUrlData.height) formattedImgTag.height = parsedUrlData.height
+	const dimensions = sizeOf(imageNode.absolutePath);
+	if (dimensions.width) formattedImgTag.width = dimensions.width;
+  if (dimensions.height) formattedImgTag.height = dimensions.height;
 
 	if (!formattedImgTag.url) return
 
@@ -282,17 +282,6 @@ const downloadMediaFile = async ({
 	createNode,
 	createNodeId,
 }) => {
-	// const mediaDataCacheKey = `wordpress-media-${e.wordpress_id}`
-	// const cacheMediaData = await cache.get(mediaDataCacheKey)
-	// // If we have cached media data and it wasn't modified, reuse
-	// // previously created file node to not try to redownload
-	// if (cacheMediaData && e.modified === cacheMediaData.modified) {
-	//   fileNodeID = cacheMediaData.fileNodeID
-	//   touchNode({ nodeId: cacheMediaData.fileNodeID })
-	// }
-
-	// If we don't have cached data, download the file
-	// if (!fileNodeID) {
 	let fileNode = false
 	try {
 		fileNode = await createRemoteFileNode({
@@ -301,25 +290,10 @@ const downloadMediaFile = async ({
 			cache,
 			createNode,
 			createNodeId,
-		})
-		// auth: _auth,
-		// if (fileNode) {
-		//   fileNodeID = fileNode.id
-		//   // await cache.set(mediaDataCacheKey, {
-		//   //   fileNodeID,
-		//   //   modified: e.modified,
-		//   // })
-		// }
+		});
 	} catch (e) {
 		throw Error(e);
 	}
-	// }
 
-	return fileNode
-	// if (fileNodeID) {
-	//   e.localFile___NODE = fileNodeID
-	//   delete e.media_details.sizes
-	// }
-
-	// return e
+	return fileNode;
 }
