@@ -1,7 +1,7 @@
 {
 	"name": "@draftbox-co/gatsby-wordpress-inline-images",
 	"description": "A Gatsby plugin to turn remote inline images to local static images",
-	"version": "1.0.4",
+	"version": "1.0.6",
 	"author": "Arun Priyadarshi <arunpriyadarshi52@gmail.com>",
 	"repository": {
     "type": "git",
@@ -11,10 +11,17 @@
     "url": "https://github.com/draftbox-co/gatsby-wordpress-inline-images/issues"
   },
 	"keywords": [
-		"gatsby plugin",
-		"inline images",
-		"wordpress"
-	],
+		"gatsby",
+		"gatsby-plugin",
+		"html",
+		"remote-images",
+		"images",
+		"images-inline",
+		"images-download",
+		"wordpress",
+		"wordpress-cms",
+		"draftbox"
+],
 	"license": "MIT",
 	"main": "n/a",
 	"dependencies": {
